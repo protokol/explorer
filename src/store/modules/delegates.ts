@@ -2,6 +2,7 @@
 import * as types from "../mutation-types";
 import { IDelegateState, IStorePayload, IDelegate } from "../../interfaces";
 import { ActionTree, GetterTree, Module, MutationTree } from "vuex";
+import { Sanitizer } from "@/utils/Sanitizer";
 
 const namespaced = true;
 const state: IDelegateState = {
@@ -39,7 +40,18 @@ const mutations: MutationTree<IDelegateState> = {
 
 const getters: GetterTree<IDelegateState, {}> = {
   delegates: (state): IDelegate[] => {
-    return state.delegates ? state.delegates : JSON.parse(localStorage.getItem("delegates") as string) || [];
+    const delegates = (state.delegates
+      ? state.delegates
+      : JSON.parse(localStorage.getItem("delegates") as string) || []
+    ).slice();
+
+    const sanitizerInstance = new Sanitizer();
+
+    for (let i = 0; i < delegates.length; i++) {
+      delegates[i].username = sanitizerInstance.apply(delegates[i].username);
+    }
+
+    return delegates;
   },
 
   forged: (state) => state.forged,

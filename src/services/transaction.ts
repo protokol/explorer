@@ -1,6 +1,7 @@
 import ApiService from "@/services/api";
 import { IApiTransactionWrapper, IApiTransactionsWrapper, ITransaction, ITransactionSearchParams } from "../interfaces";
 import { paginationLimit } from "@/constants";
+import { Sanitizer } from "@/utils/Sanitizer";
 
 class TransactionService {
   public async latest(limit: number = paginationLimit): Promise<ITransaction[]> {
@@ -11,12 +12,12 @@ class TransactionService {
       },
     })) as IApiTransactionsWrapper;
 
-    return response.data;
+    return this.sanitizeTransactions(response.data);
   }
 
   public async find(id: string): Promise<ITransaction> {
     const response = (await ApiService.get(`transactions/${id}`)) as IApiTransactionWrapper;
-    return response.data;
+    return this.sanitizeTransactions(response.data);
   }
 
   public async filterByType(
@@ -43,6 +44,8 @@ class TransactionService {
       params,
     })) as IApiTransactionsWrapper;
 
+    response.data = this.sanitizeTransactions(response.data);
+
     return response;
   }
 
@@ -58,6 +61,8 @@ class TransactionService {
       },
     })) as IApiTransactionsWrapper;
 
+    response.data = this.sanitizeTransactions(response.data);
+
     return response;
   }
 
@@ -70,6 +75,8 @@ class TransactionService {
       },
     })) as IApiTransactionsWrapper;
 
+    response.data = this.sanitizeTransactions(response.data);
+
     return response;
   }
 
@@ -81,6 +88,8 @@ class TransactionService {
         limit,
       },
     })) as IApiTransactionsWrapper;
+
+    response.data = this.sanitizeTransactions(response.data);
 
     return response;
   }
@@ -98,6 +107,8 @@ class TransactionService {
       },
     })) as IApiTransactionsWrapper;
 
+    response.data = this.sanitizeTransactions(response.data);
+
     return response;
   }
 
@@ -113,6 +124,8 @@ class TransactionService {
         limit,
       },
     })) as IApiTransactionsWrapper;
+
+    response.data = this.sanitizeTransactions(response.data);
 
     return response;
   }
@@ -130,6 +143,8 @@ class TransactionService {
       },
     })) as IApiTransactionsWrapper;
 
+    response.data = this.sanitizeTransactions(response.data);
+
     return response;
   }
 
@@ -141,6 +156,8 @@ class TransactionService {
     const response = (await ApiService.post(`locks/unlocked`, {
       ids: transactionIds,
     })) as IApiTransactionsWrapper;
+
+    response.data = this.sanitizeTransactions(response.data);
 
     return response;
   }
@@ -172,6 +189,26 @@ class TransactionService {
       },
     })) as IApiTransactionsWrapper;
     return response.meta.totalCount;
+  }
+
+  private sanitizeTransactions(transactions): any {
+    const censoredFields = ["vendorField"];
+
+    const isSingle = !Array.isArray(transactions);
+
+    if (!Array.isArray(transactions)) {
+      transactions = [transactions];
+    }
+
+    const sanitizerInstance = new Sanitizer();
+
+    for (let i = 0; i < transactions.length; i++) {
+      for (const censoredField of censoredFields) {
+        transactions[i][censoredField] = sanitizerInstance.apply(transactions[i][censoredField]);
+      }
+    }
+
+    return isSingle ? transactions[0] : transactions;
   }
 }
 

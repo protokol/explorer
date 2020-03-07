@@ -44,8 +44,7 @@ export default {
     },
 
     sanitizeVendorfield(text: string): string {
-      const emojifiedText = this.emojify(text);
-      return sanitizerInstance.apply(emojifiedText);
+      return sanitizerInstance.apply(this.emojify(text));
     },
 
     emojify(text: string): string {
