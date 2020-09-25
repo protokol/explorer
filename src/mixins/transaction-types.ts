@@ -200,6 +200,10 @@ export default {
       return this.isNFTBaseTypeGroup(typeGroup) && type === NFTBaseTransactionTypes.NFT_CREATE;
     },
 
+    isNFTTransfer(type: number, typeGroup: number, asset: Record<string, any>): boolean {
+      return this.isNFTBaseTypeGroup(typeGroup) && type === NFTBaseTransactionTypes.NFT_TRANSFER;
+    },
+
 
     // Unknown type
 

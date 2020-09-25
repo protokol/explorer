@@ -165,6 +165,10 @@ export default {
       COLLECTION_ID: "Collection ID",
       TOKEN_ATTRIBUTES: "Token Attributes",
     },
+    NFT_TRANSFER: {
+      RECIPIENT_ID: "Recipient",
+      NFT_IDS: "NFT Tokens",
+    },
     ASSET: {
       BRIDGECHAINASSETREPOSITORY: "Bridgechain Asset Repository",
       BRIDGECHAINID: "Bridgechain ID",

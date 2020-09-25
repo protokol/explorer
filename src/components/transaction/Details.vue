@@ -241,38 +241,62 @@
         </div>
         <div class="list-row-border-b" style="margin-top: 16px;">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.JSON_SCHEMA`) }}</div>
-          <br>
-          <vue-json-pretty class="px-5 " :data=transaction.asset.nftCollection.jsonSchema> </vue-json-pretty>
+          <br />
+          <vue-json-pretty class="px-5" :data="transaction.asset.nftCollection.jsonSchema"> </vue-json-pretty>
         </div>
-        <div v-if="transaction.asset.nftCollection.allowedIssuers" class="list-row-border-b" style="margin-top: 16px;">
+        <div v-if="transaction.asset.nftCollection.allowedIssuers" class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.ALLOWED_ISSUERS`) }}</div>
           <div>
             <p v-for="value in transaction.asset.nftCollection.allowedIssuers" :key="value">
-             {{value}}
+              {{ value }}
             </p>
+            <!--     TODO: add publicKey link      -->
+            <!--            <div v-for="(value) in transaction.asset.nftCollection.allowedIssuers" :key="value" >-->
+            <!--              <LinkWallet :publicKey="value" />-->
+            <!--            </div>-->
           </div>
         </div>
       </div>
     </section>
 
-    <section
-      v-if="isNFTCreate(transaction.type, transaction.typeGroup)"
-      class="py-5 mb-5 page-section md:py-10"
-    >
+    <section v-if="isNFTCreate(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
       <h3 class="px-5 sm:px-10">Token</h3>
       <br />
       <div class="px-5 sm:px-10">
         <div class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.COLLECTION_ID`) }}</div>
-          <div class="overflow-hidden break-all">{{ transaction.asset.nftToken.collectionId }}</div>
+          <LinkTransaction :id="transaction.asset.nftToken.collectionId" :truncate-id="false" />
         </div>
         <div class="list-row-border-b" style="margin-top: 16px;">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.TOKEN_ATTRIBUTES`) }}</div>
-          <br>
-          <vue-json-pretty class="px-5" :data=transaction.asset.nftToken.attributes> </vue-json-pretty>
+          <br />
+          <vue-json-pretty class="px-5" :data="transaction.asset.nftToken.attributes"> </vue-json-pretty>
         </div>
       </div>
     </section>
+
+    <section v-if="isNFTTransfer(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
+      <h3 class="px-5 sm:px-10">Token</h3>
+      <br />
+      <div class="px-5 sm:px-10">
+        <div class="list-row-border-b">
+          <div class="mr-4">{{ $t(`TRANSACTION.NFT_TRANSFER.RECIPIENT_ID`) }}</div>
+          <LinkWallet :address="transaction.asset.nftTransfer.recipientId" :trunc="false" tooltip-placement="left" />
+        </div>
+        <div class="list-row-border-b">
+          <div class="mr-4">{{ $t(`TRANSACTION.NFT_TRANSFER.NFT_IDS`) }}</div>
+          <div>
+            <LinkTransaction
+              v-for="value in transaction.asset.nftTransfer.nftIds"
+              :id="value"
+              :key="value"
+              :truncate-id="false"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
 
   </div>
 </template>
