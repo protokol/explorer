@@ -3173,6 +3173,7 @@ __metadata:
     vue-cli-plugin-svg-sprite: ^1.0.0
     vue-good-table: ^2.18.1
     vue-i18n: ^8.17.4
+    vue-json-pretty: ^1.6.7
     vue-property-decorator: ^8.4.2
     vue-router: ^3.1.6
     vue-spinner: ^1.0.3
@@ -16433,6 +16434,13 @@ resolve@1.1.7:
     vue: ^2.x
     vue-template-compiler: ^2.x
   checksum: 3/ee7b3dea65ed9f07d5376110486b6aaf2fdbdf883f4c6cc93e1ce7abd68adff30412bbc88f1c87d95c2c1fc8a218fde09fe62f03e6a058f0c45333f143aca53c
+  languageName: node
+  linkType: hard
+
+"vue-json-pretty@npm:^1.6.7":
+  version: 1.6.7
+  resolution: "vue-json-pretty@npm:1.6.7"
+  checksum: 3/92e5c353954ba7bddaf00e27e79507bd97b730c09b9de6319febb40a0d0855e96e8b56f3f1bf9afdd801e2e31c560076c31653de8ae7c64f8eb6b83d3fa0d3f9
   languageName: node
   linkType: hard
 

@@ -225,7 +225,7 @@
       class="py-5 mb-5 page-section md:py-10"
     >
       <h3 class="px-5 sm:px-10">Collection</h3>
-      <br>
+      <br />
       <div class="px-5 sm:px-10">
         <div class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.NAME`) }}</div>
@@ -239,21 +239,22 @@
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.MAXIMUM_SUPPLY`) }}</div>
           <div class="overflow-hidden break-all">{{ transaction.asset.nftCollection.maximumSupply }}</div>
         </div>
-        <div class="list-row-border" style="margin-top: 16px">
+        <div class="list-row-border-b" style="margin-top: 16px;">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.JSON_SCHEMA`) }}</div>
           <br>
+          <vue-json-pretty class="px-5 " :data=transaction.asset.nftCollection.jsonSchema> </vue-json-pretty>
         </div>
-        <div class="overflow-hidden">{{ transaction.asset.nftCollection.jsonSchema }}</div>
-
-<!--        <div class="list-row-border-b">-->
-<!--          <div class="mr-4"-->
-<!--            v-for="value in transaction.asset.nftCollection.allowedIssuers"-->
-<!--          >-->
-<!--            {{value}}-->
-<!--          </div>-->
-<!--        </div>-->
+        <div v-if="transaction.asset.nftCollection.allowedIssuers" class="list-row-border-b" style="margin-top: 16px;">
+          <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.ALLOWED_ISSUERS`) }}</div>
+          <div>
+          <p v-for="value in transaction.asset.nftCollection.allowedIssuers" :key="value">
+            {{value}}
+          </p>
+          </div>
+        </div>
       </div>
     </section>
+
   </div>
 </template>
 
@@ -265,11 +266,15 @@ import { mapGetters } from "vuex";
 import { ITransaction } from "@/interfaces";
 import { CoreTransaction, MagistrateTransaction, NFTBaseTransactionTypes, TypeGroupTransaction } from "@/enums";
 import { CryptoCompareService, LockService, TransactionService } from "@/services";
+import VueJsonPretty from "vue-json-pretty";
 
 @Component({
   computed: {
     ...mapGetters("currency", { currencySymbol: "symbol" }),
     ...mapGetters("network", ["height"]),
+  },
+  components: {
+    VueJsonPretty,
   },
 })
 export default class TransactionDetails extends Vue {
@@ -359,10 +364,6 @@ export default class TransactionDetails extends Vue {
 
     // @ts-ignore
     if (this.isEntityUpdate(this.transaction.type, this.transaction.typeGroup, this.transaction.asset)) {
-      return this.transaction.asset;
-    }
-    // @ts-ignore
-    if (this.transaction.type === 0 && this.transaction.typeGroup === 9000) {
       return this.transaction.asset;
     }
 
