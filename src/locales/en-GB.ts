@@ -182,6 +182,10 @@ export default {
       START_AMOUNT: "Start Amount",
       EXPIRATION: "Block Time Expiration",
     },
+    NFT_AUCTION_CANCEL: {
+      AUCTION_CANCEL: "Canceled Auction",
+      AUCTION_ID: "Auction",
+    },
     ASSET: {
       BRIDGECHAINASSETREPOSITORY: "Bridgechain Asset Repository",
       BRIDGECHAINID: "Bridgechain ID",
