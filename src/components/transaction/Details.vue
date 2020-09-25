@@ -247,13 +247,9 @@
         <div v-if="transaction.asset.nftCollection.allowedIssuers" class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.ALLOWED_ISSUERS`) }}</div>
           <div>
-            <p v-for="value in transaction.asset.nftCollection.allowedIssuers" :key="value">
-              {{ value }}
-            </p>
-            <!--     TODO: add publicKey link      -->
-            <!--            <div v-for="(value) in transaction.asset.nftCollection.allowedIssuers" :key="value" >-->
-            <!--              <LinkWallet :publicKey="value" />-->
-            <!--            </div>-->
+            <div v-for="value in transaction.asset.nftCollection.allowedIssuers" :key="value">
+              <LinkWallet :trunc="false" :address="addressFromPublicKey(value)" />
+            </div>
           </div>
         </div>
       </div>
