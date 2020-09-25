@@ -1,7 +1,7 @@
 .theme-light {
   --color-theme-text-thead: #c5c7cb;
   --color-theme-table-row-sticky: #fff;
-  --color-theme-accents: #ef192d;
+  --color-theme-accents: white;
   --color-theme-transaction-icon: #037cff;
 
   --color-theme-page-background-primary: #f5f6fa;

@@ -139,6 +139,27 @@ export default {
       UNDEFINED: "Undefined",
       SENT: "Sent",
       RECEIVED: "Received",
+      // NFT Base types
+      NFT_REGISTER_COLLECTION: "NFT Register Collection",
+      NFT_CREATE: "NFT Create",
+      NFT_TRANSFER: "NFT Transfer",
+      NFT_BURN: "NFT Burn",
+      // NFT Exchange types
+      NFT_AUCTION: "NFT Auction",
+      NFT_AUCTION_CANCEL: "NFT Auction Cancel",
+      NFT_BID: "NFT Bid",
+      NFT_BID_CANCEL: "NFT Bid Cancel",
+      NFT_ACCEPT_TRADE: "NFT Accept Trade",
+      // Guardian types
+      GUARDIAN_SET_USER_PERMISSIONS: "User Permissions",
+      GUARDIAN_SET_GROUP_PERMISSIONS: "Group Permissions",
+    },
+    NFT_REGISTER_COLLECTION: {
+      NAME: "Name",
+      DESCRIPTION: "Description",
+      MAXIMUM_SUPPLY: "Maximum Supply",
+      JSON_SCHEMA: "Json Schema",
+      ALLOWED_ISSUERS: "Allowed Issuers",
     },
     ASSET: {
       BRIDGECHAINASSETREPOSITORY: "Bridgechain Asset Repository",

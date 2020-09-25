@@ -5,6 +5,7 @@ import {
   MagistrateTransactionEntityType,
   MagistrateTransactionEntitySubType,
   MagistrateTransactionEntityAction,
+  NFTBaseTransactionTypes,
 } from "@/enums";
 
 const isCoreTypeGroup = (typeGroup: number): boolean => {
@@ -184,6 +185,15 @@ export default {
 
     isLegacyBridgechainUpdate(type: number, typeGroup: number, asset: Record<string, any>): boolean {
       return isMagistrateTypeGroup(typeGroup) && type === MagistrateTransaction.BRIDGECHAIN_UPDATE;
+    },
+
+    // NFT Base Types
+    isNFTBaseTypeGroup(typeGroup: number): boolean {
+      return typeGroup === TypeGroupTransaction.NFT_BASE;
+    },
+
+    isNFTRegisterCollection(type: number, typeGroup: number, asset: Record<string, any>): boolean {
+      return this.isNFTBaseTypeGroup(type) && type === NFTBaseTransactionTypes.NFT_REGISTER_COLLECTION;
     },
 
     // Unknown type

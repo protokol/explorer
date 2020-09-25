@@ -26,7 +26,6 @@
         </div>
       </div>
     </template>
-
     <span v-else-if="isSecondSignature(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.SECOND_SIGNATURE") }}</span>
     <span v-else-if="isDelegateRegistration(type, typeGroup, asset)">{{
       $t("TRANSACTION.TYPES.DELEGATE_REGISTRATION")
@@ -125,6 +124,10 @@
     <span v-else-if="isUndefinedResignation(type, typeGroup, asset)">{{
       $t("TRANSACTION.TYPES.UNDEFINED_RESIGNATION")
     }}</span>
+    <span v-else-if="isNFTRegisterCollection(type, typeGroup, asset)">{{
+      $t("TRANSACTION.TYPES.NFT_REGISTER_COLLECTION")
+    }}</span>
+
     <span v-else-if="isUndefinedUpdate(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.UNDEFINED_UPDATE") }}</span>
     <!-- By default we simply link to a recipient as we don't know this type / typegroup combination -->
     <div v-else>

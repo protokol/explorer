@@ -1,13 +1,13 @@
 {
-  "title": "DARK Explorer",
-  "server": "https://dexplorer.ark.io/api",
+  "title": "Protokol Public Devnet",
+  "server": "http://135.181.83.62:4003/api",
   "alias": "Development",
   "activeDelegates": 51,
   "rewardOffset": 10800,
   "currencies": [],
   "defaults": {
-    "token": "DARK",
-    "symbol": "DѦ",
+    "token": "TARK",
+    "symbol": "TѦ",
     "currency": null,
     "priceChartOptions": {
       "enabled": false,

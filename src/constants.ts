@@ -6,6 +6,7 @@ import {
   MagistrateTransactionEntityAction,
   MagistrateTransactionEntityType,
   MagistrateTransactionEntitySubType,
+  NFTBaseTransactionTypes, NFTExchangeTransactionTypes, GuardianTransactionTypes,
 } from "@/enums";
 
 export const URI_QRCODE_SCHEME_PREFIX = "ark:";
@@ -189,6 +190,64 @@ export const transactionTypes: ITransactionType[] = [
     key: "LEGACY_BRIDGECHAIN_UPDATE",
     type: MagistrateTransaction.BRIDGECHAIN_UPDATE,
     typeGroup: TypeGroupTransaction.MAGISTRATE,
+  },
+  // NFTBase transactions
+  {
+    key: "NFT_REGISTER_COLLECTION",
+    type: NFTBaseTransactionTypes.NFT_REGISTER_COLLECTION,
+    typeGroup: TypeGroupTransaction.NFT_BASE,
+  },
+  {
+    key: "NFT_CREATE",
+    type: NFTBaseTransactionTypes.NFT_CREATE,
+    typeGroup: TypeGroupTransaction.NFT_BASE,
+  },
+  {
+    key: "NFT_BURN",
+    type: NFTBaseTransactionTypes.NFT_BURN,
+    typeGroup: TypeGroupTransaction.NFT_BASE,
+  },
+  {
+    key: "NFT_TRANSFER",
+    type: NFTBaseTransactionTypes.NFT_TRANSFER,
+    typeGroup: TypeGroupTransaction.NFT_BASE,
+  },
+  // NFT Exchange transactions
+  {
+    key: "NFT_AUCTION",
+    type: NFTExchangeTransactionTypes.NFT_AUCTION,
+    typeGroup: TypeGroupTransaction.NFT_EXCHANGE,
+  },
+  {
+    key: "NFT_AUCTION_CANCEL",
+    type: NFTExchangeTransactionTypes.NFT_AUCTION_CANCEL,
+    typeGroup: TypeGroupTransaction.NFT_EXCHANGE,
+  },
+  {
+    key: "NFT_BID",
+    type: NFTExchangeTransactionTypes.NFT_BID,
+    typeGroup: TypeGroupTransaction.NFT_EXCHANGE,
+  },
+  {
+    key: "NFT_BID_CANCEL",
+    type: NFTExchangeTransactionTypes.NFT_BID_CANCEL,
+    typeGroup: TypeGroupTransaction.NFT_EXCHANGE,
+  },
+  {
+    key: "NFT_ACCEPT_TRADE",
+    type: NFTExchangeTransactionTypes.NFT_ACCEPT_TRADE,
+    typeGroup: TypeGroupTransaction.NFT_EXCHANGE,
+  },
+  // Guardian Transactions
+  {
+    key: "GUARDIAN_SET_USER_PERMISSIONS",
+    type: GuardianTransactionTypes.GUARDIAN_SET_USER_PERMISSIONS,
+    typeGroup: TypeGroupTransaction.GUARDIAN,
+  },
+  {
+    key: "GUARDIAN_SET_GROUP_PERMISSIONS",
+    type: GuardianTransactionTypes.GUARDIAN_SET_GROUP_PERMISSIONS,
+    typeGroup: TypeGroupTransaction.GUARDIAN,
   },
 ];
 

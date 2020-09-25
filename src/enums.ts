@@ -43,6 +43,29 @@ export enum MagistrateTransactionEntityAction {
 export enum TypeGroupTransaction {
   CORE = 1,
   MAGISTRATE = 2,
+  NFT_BASE = 9000,
+  NFT_EXCHANGE = 9001,
+  GUARDIAN = 9002,
+}
+
+export enum NFTBaseTransactionTypes {
+  NFT_REGISTER_COLLECTION = 0,
+  NFT_CREATE = 1,
+  NFT_TRANSFER = 2,
+  NFT_BURN = 3,
+}
+
+export enum NFTExchangeTransactionTypes {
+  NFT_AUCTION = 0,
+  NFT_AUCTION_CANCEL = 1,
+  NFT_BID = 2,
+  NFT_BID_CANCEL = 3,
+  NFT_ACCEPT_TRADE = 4,
+}
+
+export enum GuardianTransactionTypes {
+  GUARDIAN_SET_USER_PERMISSIONS = 0,
+  GUARDIAN_SET_GROUP_PERMISSIONS = 1,
 }
 
 export enum ForgingStatus {
