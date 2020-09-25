@@ -127,6 +127,12 @@
     <span v-else-if="isNFTRegisterCollection(type, typeGroup, asset)">{{
       $t("TRANSACTION.TYPES.NFT_REGISTER_COLLECTION")
     }}</span>
+    <span v-else-if="isNFTCreate(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.NFT_CREATE") }}</span>
+    <span v-else-if="isNFTTransfer(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.NFT_TRANSFER") }}</span>
+    <span v-else-if="isNFTBurn(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.NFT_BURN") }}</span>
+    <span v-else-if="isNFTAuction(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.NFT_AUCTION") }}</span>
+    <span v-else-if="isNFTAuctionCancel(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.NFT_AUCTION_CANCEL") }}</span>
+    <span v-else-if="isNFTBid(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.NFT_BID") }}</span>
 
     <span v-else-if="isUndefinedUpdate(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.UNDEFINED_UPDATE") }}</span>
     <!-- By default we simply link to a recipient as we don't know this type / typegroup combination -->

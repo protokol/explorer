@@ -186,6 +186,11 @@ export default {
       AUCTION_CANCEL: "Canceled Auction",
       AUCTION_ID: "Auction",
     },
+    NFT_BID: {
+      BID: "Bid",
+      AUCTION_ID: "Auction",
+      AMOUNT: "Bid Amount",
+    },
     ASSET: {
       BRIDGECHAINASSETREPOSITORY: "Bridgechain Asset Repository",
       BRIDGECHAINID: "Bridgechain ID",
