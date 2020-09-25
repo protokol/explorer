@@ -224,7 +224,7 @@
       v-if="isNFTRegisterCollection(transaction.type, transaction.typeGroup)"
       class="py-5 mb-5 page-section md:py-10"
     >
-      <h3 class="px-5 sm:px-10">Collection</h3>
+      <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.COLLECTION`) }}</h3>
       <br />
       <div class="px-5 sm:px-10">
         <div class="list-row-border-b">
@@ -260,7 +260,7 @@
     </section>
 
     <section v-if="isNFTCreate(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
-      <h3 class="px-5 sm:px-10">Token</h3>
+      <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.NFT_CREATE.TOKEN`) }}</h3>
       <br />
       <div class="px-5 sm:px-10">
         <div class="list-row-border-b">
@@ -276,7 +276,7 @@
     </section>
 
     <section v-if="isNFTTransfer(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
-      <h3 class="px-5 sm:px-10">Token</h3>
+      <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.NFT_TRANSFER.TRANSFER`) }}</h3>
       <br />
       <div class="px-5 sm:px-10">
         <div class="list-row-border-b">
@@ -296,6 +296,18 @@
         </div>
       </div>
     </section>
+
+    <section v-if="isNFTBurn(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
+      <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.NFT_BURN.BURN`) }}</h3>
+      <br />
+      <div class="px-5 sm:px-10">
+        <div class="list-row-border-b">
+          <div class="mr-4">{{ $t(`TRANSACTION.NFT_BURN.NFT_ID`) }}</div>
+          <LinkTransaction :id="transaction.asset.nftBurn.nftId" :truncate-id="false" />
+        </div>
+      </div>
+    </section>
+
 
 
   </div>

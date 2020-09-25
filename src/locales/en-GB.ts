@@ -155,6 +155,7 @@ export default {
       GUARDIAN_SET_GROUP_PERMISSIONS: "Group Permissions",
     },
     NFT_REGISTER_COLLECTION: {
+      COLLECTION: "Collection",
       NAME: "Name",
       DESCRIPTION: "Description",
       MAXIMUM_SUPPLY: "Maximum Supply",
@@ -162,12 +163,18 @@ export default {
       ALLOWED_ISSUERS: "Allowed Issuers",
     },
     NFT_CREATE: {
+      TOKEN: "Token",
       COLLECTION_ID: "Collection ID",
       TOKEN_ATTRIBUTES: "Token Attributes",
     },
     NFT_TRANSFER: {
+      TRANSFER: "Transfer",
       RECIPIENT_ID: "Recipient",
       NFT_IDS: "NFT Tokens",
+    },
+    NFT_BURN: {
+      BURN: "Burn",
+      NFT_ID: "Token",
     },
     ASSET: {
       BRIDGECHAINASSETREPOSITORY: "Bridgechain Asset Repository",
