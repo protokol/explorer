@@ -196,6 +196,11 @@ export default {
       return this.isNFTBaseTypeGroup(typeGroup) && type === NFTBaseTransactionTypes.NFT_REGISTER_COLLECTION;
     },
 
+    isNFTCreate(type: number, typeGroup: number, asset: Record<string, any>): boolean {
+      return this.isNFTBaseTypeGroup(typeGroup) && type === NFTBaseTransactionTypes.NFT_CREATE;
+    },
+
+
     // Unknown type
 
     isUndefinedRegistration(type: number, typeGroup: number, asset: Record<string, any>): boolean {

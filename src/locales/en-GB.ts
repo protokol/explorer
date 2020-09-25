@@ -161,6 +161,10 @@ export default {
       JSON_SCHEMA: "Json Schema",
       ALLOWED_ISSUERS: "Allowed Issuers",
     },
+    NFT_CREATE: {
+      COLLECTION_ID: "Collection ID",
+      TOKEN_ATTRIBUTES: "Token Attributes",
+    },
     ASSET: {
       BRIDGECHAINASSETREPOSITORY: "Bridgechain Asset Repository",
       BRIDGECHAINID: "Bridgechain ID",

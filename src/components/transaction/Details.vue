@@ -247,10 +247,29 @@
         <div v-if="transaction.asset.nftCollection.allowedIssuers" class="list-row-border-b" style="margin-top: 16px;">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.ALLOWED_ISSUERS`) }}</div>
           <div>
-          <p v-for="value in transaction.asset.nftCollection.allowedIssuers" :key="value">
-            {{value}}
-          </p>
+            <p v-for="value in transaction.asset.nftCollection.allowedIssuers" :key="value">
+             {{value}}
+            </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      v-if="isNFTCreate(transaction.type, transaction.typeGroup)"
+      class="py-5 mb-5 page-section md:py-10"
+    >
+      <h3 class="px-5 sm:px-10">Token</h3>
+      <br />
+      <div class="px-5 sm:px-10">
+        <div class="list-row-border-b">
+          <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.COLLECTION_ID`) }}</div>
+          <div class="overflow-hidden break-all">{{ transaction.asset.nftToken.collectionId }}</div>
+        </div>
+        <div class="list-row-border-b" style="margin-top: 16px;">
+          <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.TOKEN_ATTRIBUTES`) }}</div>
+          <br>
+          <vue-json-pretty class="px-5" :data=transaction.asset.nftToken.attributes> </vue-json-pretty>
         </div>
       </div>
     </section>
