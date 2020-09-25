@@ -170,11 +170,17 @@ export default {
     NFT_TRANSFER: {
       TRANSFER: "Transfer",
       RECIPIENT_ID: "Recipient",
-      NFT_IDS: "NFT Tokens",
+      NFT_IDS: "Tokens",
     },
     NFT_BURN: {
       BURN: "Burn",
       NFT_ID: "Token",
+    },
+    NFT_AUCTION: {
+      AUCTION: "Auction",
+      NFT_IDS: "Tokens",
+      START_AMOUNT: "Start Amount",
+      EXPIRATION: "Block Time Expiration",
     },
     ASSET: {
       BRIDGECHAINASSETREPOSITORY: "Bridgechain Asset Repository",

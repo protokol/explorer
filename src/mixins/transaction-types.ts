@@ -5,7 +5,7 @@ import {
   MagistrateTransactionEntityType,
   MagistrateTransactionEntitySubType,
   MagistrateTransactionEntityAction,
-  NFTBaseTransactionTypes,
+  NFTBaseTransactionTypes, NFTExchangeTransactionTypes,
 } from "@/enums";
 
 const isCoreTypeGroup = (typeGroup: number): boolean => {
@@ -206,6 +206,14 @@ export default {
 
     isNFTBurn(type: number, typeGroup: number, asset: Record<string, any>): boolean {
       return this.isNFTBaseTypeGroup(typeGroup) && type === NFTBaseTransactionTypes.NFT_BURN;
+    },
+
+    //NFT Exchange Types
+    isNFTExchangeTypeGroup(typeGroup: number): boolean {
+      return typeGroup === TypeGroupTransaction.NFT_EXCHANGE;
+    },
+    isNFTAuction(type: number, typeGroup: number, asset: Record<string, any>): boolean {
+      return this.isNFTExchangeTypeGroup(typeGroup) && type === NFTExchangeTransactionTypes.NFT_AUCTION;
     },
 
 
