@@ -325,7 +325,7 @@
         </div>
         <div class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_AUCTION.START_AMOUNT`) }}</div>
-          <div class="overflow-hidden break-all">{{ transaction.asset.nftAuction.startAmount }}</div>
+          <div class="overflow-hidden break-all">{{ readableCrypto(transaction.asset.nftAuction.startAmount) }}</div>
         </div>
         <div class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_AUCTION.EXPIRATION`) }}</div>
@@ -341,7 +341,6 @@
         <div class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_AUCTION_CANCEL.AUCTION_ID`) }}</div>
           <LinkTransaction :id="transaction.asset.nftAuctionCancel.auctionId" :truncate-id="false" />
-
         </div>
       </div>
     </section>
@@ -356,11 +355,10 @@
         </div>
         <div class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_BID_AMOUNT`) }}</div>
-          <div class="overflow-hidden break-all">{{ transaction.asset.nftBid.bidAmount }}</div>
+          <div class="overflow-hidden break-all">{{ readableCrypto(transaction.asset.nftBid.bidAmount) }}</div>
         </div>
       </div>
     </section>
-
   </div>
 </template>
 
