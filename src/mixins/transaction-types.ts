@@ -224,6 +224,9 @@ export default {
     isNFTBidCancel(type: number, typeGroup: number, asset: Record<string, any>): boolean {
       return this.isNFTExchangeTypeGroup(typeGroup) && type === NFTExchangeTransactionTypes.NFT_BID_CANCEL;
     },
+    isNFTAcceptTrade(type: number, typeGroup: number, asset: Record<string, any>): boolean {
+      return this.isNFTExchangeTypeGroup(typeGroup) && type === NFTExchangeTransactionTypes.NFT_ACCEPT_TRADE;
+    },
 
 
     // Unknown type

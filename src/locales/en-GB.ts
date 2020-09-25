@@ -195,6 +195,11 @@ export default {
       BID_CANCEL: "Canceled Bid",
       BID_ID: "Bid",
     },
+    NFT_ACCEPT_TRADE: {
+      ACCEPT_TRADE: "Trade",
+      AUCTION_ID: "Auction",
+      BID_ID: "Bid",
+    },
     ASSET: {
       BRIDGECHAINASSETREPOSITORY: "Bridgechain Asset Repository",
       BRIDGECHAINID: "Bridgechain ID",
