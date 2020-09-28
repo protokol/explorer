@@ -239,10 +239,11 @@
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.MAXIMUM_SUPPLY`) }}</div>
           <div class="overflow-hidden break-all">{{ transaction.asset.nftCollection.maximumSupply }}</div>
         </div>
-        <div class="list-row-border-b" style="margin-top: 16px;">
-          <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.JSON_SCHEMA`) }}</div>
-          <br />
-          <vue-json-pretty class="px-5" :data="transaction.asset.nftCollection.jsonSchema"> </vue-json-pretty>
+        <div class="list-row-border-b">
+          <div>
+            <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.JSON_SCHEMA`) }}</div>
+            <vue-json-pretty style="margin-top: 16px;" :data="transaction.asset.nftCollection.jsonSchema"> </vue-json-pretty>
+          </div>
         </div>
         <div v-if="transaction.asset.nftCollection.allowedIssuers" class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.ALLOWED_ISSUERS`) }}</div>
@@ -263,10 +264,11 @@
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.COLLECTION_ID`) }}</div>
           <LinkTransaction :id="transaction.asset.nftToken.collectionId" :truncate-id="false" />
         </div>
-        <div class="list-row-border-b" style="margin-top: 16px;">
-          <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.TOKEN_ATTRIBUTES`) }}</div>
-          <br />
-          <vue-json-pretty class="px-5" :data="transaction.asset.nftToken.attributes"> </vue-json-pretty>
+        <div class="list-row-border-b">
+          <div>
+            <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.TOKEN_ATTRIBUTES`) }}</div>
+            <vue-json-pretty style="margin-top: 16px;" :data="transaction.asset.nftToken.attributes"> </vue-json-pretty>
+          </div>
         </div>
       </div>
     </section>
