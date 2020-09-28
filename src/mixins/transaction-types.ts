@@ -5,7 +5,8 @@ import {
   MagistrateTransactionEntityType,
   MagistrateTransactionEntitySubType,
   MagistrateTransactionEntityAction,
-  NFTBaseTransactionTypes, NFTExchangeTransactionTypes,
+  NFTBaseTransactionTypes,
+  NFTExchangeTransactionTypes, GuardianTransactionTypes,
 } from "@/enums";
 
 const isCoreTypeGroup = (typeGroup: number): boolean => {
@@ -228,6 +229,16 @@ export default {
       return this.isNFTExchangeTypeGroup(typeGroup) && type === NFTExchangeTransactionTypes.NFT_ACCEPT_TRADE;
     },
 
+    //Guardian Types
+    isGuardianTypeGroup(typeGroup: number): boolean {
+      return typeGroup === TypeGroupTransaction.GUARDIAN;
+    },
+    isUserPermissions(type: number, typeGroup: number, asset: Record<string, any>): boolean {
+      return this.isGuardianTypeGroup(typeGroup) && type === GuardianTransactionTypes.GUARDIAN_SET_USER_PERMISSIONS;
+    },
+    isGroupPermissions(type: number, typeGroup: number, asset: Record<string, any>): boolean {
+      return this.isGuardianTypeGroup(typeGroup) && type === GuardianTransactionTypes.GUARDIAN_SET_GROUP_PERMISSIONS;
+    },
 
     // Unknown type
 

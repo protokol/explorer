@@ -68,6 +68,11 @@ export enum GuardianTransactionTypes {
   GUARDIAN_SET_GROUP_PERMISSIONS = 1,
 }
 
+export enum GuardianPermissionKind {
+  Deny,
+  Allow,
+}
+
 export enum ForgingStatus {
   Forging,
   Missing,

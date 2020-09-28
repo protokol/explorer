@@ -200,6 +200,28 @@ export default {
       AUCTION_ID: "Auction",
       BID_ID: "Bid",
     },
+    GUARDIAN_PERMISSION_KIND: {
+      ALLOW: "Allow",
+      DENY: "Deny",
+    },
+    GUARDIAN_SET_GROUP_PERMISSIONS: {
+      GROUP_PERMISSIONS: "Group permissions",
+      NAME: "Name",
+      ACTIVE: "Is group active",
+      DEFAULT: "Is group set to default",
+      PRIORITY: "Group priority",
+      PERMISSIONS: "Permissions",
+      KIND: "Kind",
+      TRANSACTIONS: "Transactions",
+    },
+    GUARDIAN_SET_USER_PERMISSIONS: {
+      USER_PERMISSIONS: "User permissions",
+      WALLET: "Wallet",
+      GROUPS: "Group names",
+      PERMISSIONS: "Permissions",
+      KIND: "Kind",
+      TRANSACTIONS: "Transactions",
+    },
     ASSET: {
       BRIDGECHAINASSETREPOSITORY: "Bridgechain Asset Repository",
       BRIDGECHAINID: "Bridgechain ID",

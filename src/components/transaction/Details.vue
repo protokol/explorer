@@ -350,7 +350,7 @@
           <LinkTransaction :id="transaction.asset.nftBid.auctionId" :truncate-id="false" />
         </div>
         <div class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.NFT_BID_AMOUNT`) }}</div>
+          <div class="mr-4">{{ $t(`TRANSACTION.NFT_BID.AMOUNT`) }}</div>
           <div class="overflow-hidden break-all">{{ readableCrypto(transaction.asset.nftBid.bidAmount) }}</div>
         </div>
       </div>
@@ -367,18 +367,79 @@
       </div>
     </section>
 
-    <section v-if="isNFTAcceptTrade(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
-      <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.NFT_ACCEPT_TRADE.ACCEPT_TRADE`) }}</h3>
+    <section v-if="isGroupPermissions(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
+      <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.GROUP_PERMISSIONS`) }}</h3>
       <br />
       <div class="px-5 sm:px-10">
         <div class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.NFT_ACCEPT_TRADE.AUCTION_ID`) }}</div>
-          <LinkTransaction :id="transaction.asset.nftAcceptTrade.auctionId" :truncate-id="false" />
+          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.NAME`) }}</div>
+          <div class="overflow-hidden break-all">{{ transaction.asset.setGroupPermissions.name }}</div>
         </div>
         <div class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.NFT_ACCEPT_TRADE.BID_ID`) }}</div>
-          <LinkTransaction :id="transaction.asset.nftAcceptTrade.bidId" :truncate-id="false" />
+          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.ACTIVE`) }}</div>
+          <div class="overflow-hidden break-all">{{ transaction.asset.setGroupPermissions.active }}</div>
         </div>
+        <div class="list-row-border-b">
+          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.DEFAULT`) }}</div>
+          <div class="overflow-hidden break-all">{{ transaction.asset.setGroupPermissions.default }}</div>
+        </div>
+        <div class="list-row-border-b">
+          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.PRIORITY`) }}</div>
+          <div class="overflow-hidden break-all">{{ transaction.asset.setGroupPermissions.priority }}</div>
+        </div>
+        <div class="list-row">
+          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.PERMISSIONS`) }}</div>
+        </div>
+        <template v-for="value in transaction.asset.setGroupPermissions.permissions" :id="value">
+          <div class="list-row">
+            <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.KIND`) }}</div>
+            <div class="overflow-hidden break-all">{{ permissionsKindMessage(value.kind) }}</div>
+          </div>
+          <div class="list-row-border-b">
+            <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.TRANSACTIONS`) }}</div>
+            <div>
+              <div v-for="trx in value.types">
+                {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(trx.transactionTypeGroup, trx.transactionType)}`) }}
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </section>
+
+    <section v-if="isUserPermissions(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
+      <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.USER_PERMISSIONS`) }}</h3>
+      <br />
+      <div class="px-5 sm:px-10">
+        <div class="list-row-border-b">
+          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.WALLET`) }}</div>
+          <LinkWallet :trunc="false" :address="addressFromPublicKey(transaction.asset.setUserPermissions.publicKey)" />
+        </div>
+        <div class="list-row-border-b">
+          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.GROUPS`) }}</div>
+          <div>
+            <div v-for="value in transaction.asset.setUserPermissions.groupNames" :key="value">
+              {{value}}
+            </div>
+          </div>
+        </div>
+        <div class="list-row">
+          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.PERMISSIONS`) }}</div>
+        </div>
+        <template v-for="value in transaction.asset.setUserPermissions.permissions" :id="value">
+          <div class="list-row">
+            <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.KIND`) }}</div>
+            <div class="overflow-hidden break-all">{{ permissionsKindMessage(value.kind) }}</div>
+          </div>
+          <div class="list-row-border-b">
+            <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.TRANSACTIONS`) }}</div>
+            <div>
+              <div v-for="trx in value.types">
+                {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(trx.transactionTypeGroup, trx.transactionType)}`) }}
+              </div>
+            </div>
+          </div>
+        </template>
       </div>
     </section>
 
@@ -391,10 +452,17 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import { BigNumber } from "@/utils/BigNumber";
 import { TranslateResult } from "vue-i18n";
 import { mapGetters } from "vuex";
-import { ITransaction } from "@/interfaces";
-import { CoreTransaction, MagistrateTransaction, NFTBaseTransactionTypes, TypeGroupTransaction } from "@/enums";
+import { ITransaction, ITransactionType } from "@/interfaces";
+import {
+  CoreTransaction,
+  GuardianPermissionKind,
+  MagistrateTransaction,
+  NFTBaseTransactionTypes,
+  TypeGroupTransaction,
+} from "@/enums";
 import { CryptoCompareService, LockService, TransactionService } from "@/services";
 import VueJsonPretty from "vue-json-pretty";
+import { transactionTypes } from "@/constants";
 
 @Component({
   computed: {
@@ -415,6 +483,25 @@ export default class TransactionDetails extends Vue {
   private multipaymentAmount: BigNumber | null = null;
   private timelockStatus: TranslateResult | null = null;
   private timelockLink: string | null = null;
+
+  transactionTypeKey(typeGroup: number, type: number): string {
+    for (const transaction of transactionTypes) {
+      if (transaction.typeGroup == typeGroup) {
+        if (transaction.type == type) {
+          return transaction.key;
+        }
+      }
+    }
+    return null;
+  }
+
+  permissionsKindMessage(allowType: number) {
+    if (allowType === GuardianPermissionKind.Deny) {
+      return this.$t(`TRANSACTION.GUARDIAN_PERMISSION_KIND.DENY`);
+    } else {
+      return this.$t(`TRANSACTION.GUARDIAN_PERMISSION_KIND.ALLOW`);
+    }
+  }
 
   get confirmations() {
     return this.initialBlockHeight ? this.height - this.initialBlockHeight : this.transaction.confirmations;
