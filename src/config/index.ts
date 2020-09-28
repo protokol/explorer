@@ -28,33 +28,13 @@ export const knownWalletsUrls = {
 
 export const socialMedia = [
   {
-    name: "facebook",
-    url: "https://facebook.ark.io",
-    viewBox: "0 0 10 16",
-  },
-  {
     name: "twitter",
-    url: "https://twitter.ark.io",
+    url: "https://twitter.com/protocol",
     viewBox: "0 0 16 16",
-  },
-  {
-    name: "youtube",
-    url: "https://youtube.ark.io",
-    viewBox: "0 0 18 16",
   },
   {
     name: "email",
-    url: "mailto:info@ark.io",
-    viewBox: "0 0 16 16",
-  },
-  {
-    name: "telegram",
-    url: "https://telegram.me/ArkEcosystem",
-    viewBox: "0 0 14 16",
-  },
-  {
-    name: "reddit",
-    url: "https://reddit.ark.io",
+    url: "mailto:info@protokol.com ",
     viewBox: "0 0 16 16",
   },
   {
@@ -63,38 +43,8 @@ export const socialMedia = [
     viewBox: "0 0 16 16",
   },
   {
-    name: "bitcointalk",
-    url: "https://bitcointalk.ark.io",
+    name: "linkedin",
+    url: "https://www.linkedin.com/company/protokolsolutions/",
     viewBox: "0 0 16 16",
-  },
-  {
-    name: "slack",
-    url: "https://slack.ark.io",
-    viewBox: "0 0 14 16",
-  },
-  {
-    name: "discord",
-    url: "https://discord.ark.io",
-    viewBox: "0 0 14 16",
-  },
-  {
-    name: "instagram",
-    url: "https://instagram.ark.io",
-    viewBox: "0 0 14 16",
-  },
-  {
-    name: "medium",
-    url: "https://blog.ark.io",
-    viewBox: "0 0 16 16",
-  },
-  {
-    name: "soundcloud",
-    url: "https://soundcloud.com/thearkcryptopodcast",
-    viewBox: "0 0 20 16",
-  },
-  {
-    name: "minds",
-    url: "https://www.minds.com/arkecosystem",
-    viewBox: "0 0 14 16",
   },
 ];
