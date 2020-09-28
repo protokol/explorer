@@ -14,8 +14,10 @@ export const I18N = {
 
 export const brand = {
   footer: {
-    url: "https://ark.io",
-    text: "ARK.io",
+    protokolUrl: "https://www.protokol.com",
+    protokolText: "Protokol.com",
+    arkUrl: "https://ark.io",
+    arkText: "ARK.io",
   },
 };
 
@@ -57,7 +59,7 @@ export const socialMedia = [
   },
   {
     name: "github",
-    url: "https://github.ark.io",
+    url: "https://github.com/protokol",
     viewBox: "0 0 16 16",
   },
   {

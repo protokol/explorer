@@ -1,8 +1,12 @@
 <template>
   <footer class="flex-col px-5 AppFooter md:px-10 lg:flex-row">
     <div class="mb-4 text-center lg:mb-0 md:text-left">
-      <span class="block mb-4 text-center md:inline-block md:mb-0"
-        >&copy; <a :href="brandData.footer.url" target="_blank">{{ brandData.footer.text }}</a> | {{ year }}.
+      <span class="block mb-4 text-center md:inline-block md:mb-0">
+        &copy;
+        <a :href="brandData.footer.protokolUrl" target="_blank">{{ brandData.footer.protokolText }}</a> |
+         &copy;
+        <a :href="brandData.footer.arkUrl" target="_blank">{{ brandData.footer.arkText }}</a>
+        | {{ year }}.
         {{ $t("FOOTER.ALL_RIGHTS_RESERVED") }}</span
       >
       <div class="block md:inline-block">
@@ -37,7 +41,7 @@ export default class AppFooter extends Vue {
   }
 
   get versionLink() {
-    return `https://github.com/ArkEcosystem/explorer/commit/${process.env.VUE_APP_GIT_VERSION}`;
+    return `https://github.com/protokol/explorer/commit/${process.env.VUE_APP_GIT_VERSION}`;
   }
 
   get date() {
