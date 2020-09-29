@@ -1,7 +1,7 @@
 .theme-light {
   --color-theme-text-thead: #c5c7cb;
   --color-theme-table-row-sticky: #fff;
-  --color-theme-accents: white;
+  --color-theme-accents: #429EF5;
   --color-theme-transaction-icon: #037cff;
 
   --color-theme-page-background-primary: #f5f6fa;
@@ -44,9 +44,9 @@
 }
 
 .theme-dark {
-  --color-theme-text-thead: #a1a2a6;
+  --color-theme-text-thead: white;
   --color-theme-table-row-sticky: #25262c;
-  --color-theme-accents: #142B4D;
+  --color-theme-accents: #429EF5;
   --color-theme-transaction-icon: #037cff;
 
   --color-theme-page-background-primary: #1a1b1f;
@@ -55,14 +55,14 @@
   --color-theme-table-row: #25262c;
   --color-theme-table-row-hover: #2a2b31;
   --color-theme-text-primary: #ffffff;
-  --color-theme-text-secondary: #a1a2a6;
+  --color-theme-text-secondary: white;
   --color-theme-text-content: #a1a2a6;
   --color-theme-text-placeholder: #787a86;
   --theme-shadow: 0 1px 9px rgba(0, 0, 0, 0.15);
   --theme-table-hover-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
   --theme-border: #25262c;
   --theme-border-secondary: #25262c;
-  --nav-background: #2a2b31;
+  --nav-background: #2c2d33;
   --nav-border: #282a30;
   --stat-background: #202126;
   --theme-text-tertiary: #626466;

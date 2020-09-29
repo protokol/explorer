@@ -55,7 +55,7 @@ export default class HomePage extends Vue {
   private transactionType: ITransactionType = { key: "ALL", type: -1 };
 
   get isChartEnabled() {
-    return this.$store.getters["ui/priceChartOptions"].enabled;
+    return false;
   }
 
   public created() {
