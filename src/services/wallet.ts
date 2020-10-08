@@ -1,6 +1,7 @@
 import ApiService from "@/services/api";
 import { IApiWalletsWrapper, IWalletSearchParams } from "../interfaces";
 import { paginationLimit } from "@/constants";
+import dotify from "node-dotify"
 
 class WalletService {
   public async find(address: string) {
@@ -19,14 +20,15 @@ class WalletService {
   }
 
   public async search(
-    body: IWalletSearchParams,
+    parameters: IWalletSearchParams,
     page = 1,
     limit: number = paginationLimit,
   ): Promise<IApiWalletsWrapper> {
-    const response = (await ApiService.post("wallets/search", body, {
+    const response = (await ApiService.get("wallets", {
       params: {
         page,
         limit,
+        ...dotify(parameters),
       },
     })) as IApiWalletsWrapper;
 
