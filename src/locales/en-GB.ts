@@ -210,17 +210,15 @@ export default {
       ACTIVE: "Is group active",
       DEFAULT: "Is group set to default",
       PRIORITY: "Group priority",
-      PERMISSIONS: "Permissions",
-      KIND: "Kind",
-      TRANSACTIONS: "Transactions",
+      ALLOWED_TRANSACTIONS: "Allowed transactions",
+      DENIED_TRANSACTIONS: "Denied transactions"
     },
     GUARDIAN_SET_USER_PERMISSIONS: {
       USER_PERMISSIONS: "User permissions",
       WALLET: "Wallet",
       GROUPS: "Group names",
-      PERMISSIONS: "Permissions",
-      KIND: "Kind",
-      TRANSACTIONS: "Transactions",
+      ALLOWED_TRANSACTIONS: "Allowed transactions",
+      DENIED_TRANSACTIONS: "Denied transactions"
     },
     ASSET: {
       BRIDGECHAINASSETREPOSITORY: "Bridgechain Asset Repository",
