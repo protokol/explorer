@@ -392,15 +392,15 @@
         <div class="list-row" v-if="transaction.asset.setGroupPermissions.allow">
           <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.ALLOWED_TRANSACTIONS`) }}</div>
         </div>
-        <div v-for="(value, index) in transaction.asset.setGroupPermissions.allow" class="">
-          {{index + 1}}. {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
+        <div v-for="value in transaction.asset.setGroupPermissions.allow" class="">
+          {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
         </div>
         <div class="list-row-border-b"></div>
         <div class="list-row" v-if="transaction.asset.setGroupPermissions.deny">
           <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.DENIED_TRANSACTIONS`) }}</div>
         </div>
-        <div v-for="(value, index) in transaction.asset.setGroupPermissions.deny">
-          {{index + 1}}. {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
+        <div v-for="value in transaction.asset.setGroupPermissions.deny">
+          {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
         </div>
       </div>
     </section>
@@ -424,15 +424,15 @@
         <div class="list-row-border-b" v-if="transaction.asset.setUserPermissions.allow">
           <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.ALLOWED_TRANSACTIONS`) }}</div>
         </div>
-        <div v-for="(value,index) in transaction.asset.setUserPermissions.allow">
-          {{index + 1}}. {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
+        <div v-for="value in transaction.asset.setUserPermissions.allow">
+          {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
         </div>
         <div class="list-row-border-b"></div>
         <div class="list-row-border-b" v-if="transaction.asset.setUserPermissions.deny">
           <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.DENIED_TRANSACTIONS`) }}</div>
         </div>
-        <div v-for="(value, index) in transaction.asset.setUserPermissions.deny">
-          {{index + 1}}. {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
+        <div v-for="value in transaction.asset.setUserPermissions.deny">
+          {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
         </div>
       </div>
     </section>
