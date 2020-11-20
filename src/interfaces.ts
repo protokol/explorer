@@ -113,12 +113,18 @@ export interface ITimestamp {
 
 export interface IWallet {
   address: string;
+  balance: string;
   username: string;
   publicKey: string;
   vote: string;
   isDelegate: boolean;
   isResigned?: boolean;
   lockedBalance?: BigNumber;
+  secondPublicKey?: string;
+  multiSignature?: {
+    min: number;
+    publicKeys: string[];
+  };
 }
 
 export interface IApiResponse {
@@ -303,6 +309,6 @@ export interface IBlockSearchParams {
 export interface IWalletSearchParams {
   address?: string;
   username?: string;
-  vote?: string;
+  attributes?: { vote?: string };
   balance?: { from?: number; to?: number };
 }
